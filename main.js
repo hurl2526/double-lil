@@ -36,15 +36,19 @@ const Lil = () => {
 
         return;
       }
-      
       let current = this.head;
+      if (current !==null){
+        newNode.previous = this.tail
+        this.tail.next = newNode
+        this.tail = newNode
 
-      while (current.next !== null) {
-        current = current.next
-      }
+      // while (current.next !== null) {
+      //   current = current.next
+      // }
 
-      current.next = newNode;
-    },
+      // current.next = newNode;
+    }
+  },
 
     removeFromStart: function() {
       const toBeRemoved = this.head.value;
@@ -54,14 +58,15 @@ const Lil = () => {
     },
 
     removeFromEnd: function() {
-      let current = this.head;
+      // let current = this.head;
 
-      while (current.next.next !== null) {
-        current = current.next
-      }
+      // while (current.next.next !== null) {
+      //   current = current.next
+      // }
 
-      const toBeRemoved = current.next.value;
-      current.next = null;
+      const toBeRemoved = this.tail.value;
+      this.tail = this.tail.previous
+      this.tail.next = null
 
       return toBeRemoved;
     },
